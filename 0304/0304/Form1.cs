@@ -82,22 +82,18 @@ namespace _0304
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox5.Text = "搜尋結果:\r\n學號\t姓名\t國文\t數學\r\n";
-            bool found = false;
+            
+
             for (int i = 0; i < Counter; i++)
             {
                 if (textBox1.Text == name[i, 0])
                 {
-                    textBox5.Text += (name[i, 0] + "\t" + name[i, 1] + "\t" + scores[i, 0] + "\t" + scores[i, 1] + "\r\n");
-                    found = true;
-                    break;  // 找到匹配後，退出循環
+                    textBox5.Text = "搜尋結果:\r\n 學號\t 姓名\t 國文\t 數學\r\n " + name[i, 0] + "\t" + name[i, 1] + "\t" + scores[i, 0] + "\t" + scores[i, 1] + "\r\n";
+                    break;
                 }
             }
-            if (!found)
-            {
-                textBox5.Text = "資料不存在";  // 若找不到匹配的學號，顯示提示訊息
-                MessageBox.Show("資料不存在", "搜尋學號" + textBox1.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            if (i > counter)  //資料不在資料庫
+                MessageBox.Show("資料不存在", "搜尋學號" + textBox1.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
