@@ -26,8 +26,6 @@ namespace _0318
             InitializeComponent();
         }
 
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Excel檔案(*.csv)|*.csv";
@@ -47,12 +45,12 @@ namespace _0318
                     num[Counter] = Convert.ToInt32(input[1]);
                     coordinate[Counter, 0] = Convert.ToDouble(input[2]);
                     coordinate[Counter, 1] = Convert.ToDouble(input[3]);
-                    numTotal += Convert.ToInt32(input[1]);
-                    distanceTotal += Convert.ToDouble(Math.Sqrt(Math.Pow(x - coordinate[Counter, 0], 2) + Math.Pow(y - coordinate[Counter, 1], 2)));
+                    numTotal += num[Counter];
+                    distanceTotal += Math.Sqrt(Math.Pow(x - coordinate[Counter, 0], 2) + Math.Pow(y - coordinate[Counter, 1], 2));
                     Counter++;
                 }
-                sr.Close();
                 ShowData();
+                sr.Close();
             }
         }
 
@@ -65,11 +63,6 @@ namespace _0318
             textBox4.Text = "" + Counter;
             textBox5.Text = "" + numTotal;
             textBox6.Text = "" + distanceTotal / Counter;
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
